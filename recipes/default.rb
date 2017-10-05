@@ -15,7 +15,7 @@ template "/etc/systemd/system/echo.service" do
   variables(
     description: "an echo server",
     system_user: 'notroot',
-    exec_start: "/bin/netcat -ll -p 7000 -c /bin/cat"
+    exec_start: "/bin/netcat -ll -p 9001 -c /bin/cat"
   )
   action :create
 end

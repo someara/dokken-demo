@@ -3,7 +3,7 @@ driver:
   name: dokken
   chef_version: current
   privileged: true
-  
+
 transport:
   name: dokken
 
@@ -12,14 +12,34 @@ provisioner:
 
 verifier:
   name: inspec
-    
+
 platforms:
 - name: default
   driver:
     image: dokken/ubuntu-16.04
     pid_one_command: /bin/systemd
-    
+
 suites:
-  - name: default
-    run_list:
+- name: one
+  run_list:
     - recipe[dokken-demo::default]
+  driver:
+    hostname: one.computers.biz
+    ports:
+      - '9001'
+
+- name: two
+  run_list:
+    - recipe[dokken-demo::default]
+  driver:
+    hostname: two.computers.biz
+    ports:
+      - '9001'
+
+- name: three
+  run_list:
+    - recipe[dokken-demo::default]    
+  driver:
+    hostname: three.computers.biz
+    ports:
+      - '9001'
