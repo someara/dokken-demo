@@ -1,0 +1,11 @@
+[Unit]
+Description=echo
+After=network.target
+
+[Service]
+ExecStart=<%= @exec_start %>
+User=<%= @system_user %>
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
